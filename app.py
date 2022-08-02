@@ -156,3 +156,7 @@ The calculator computes the number of tokens in a sample of text you provide and
 
 with rewrite_tab:
     st.write('Coming soon...')
+
+st.write("""---
+**Note:** Actual costs may deviate from estimations provided by this tool. The costs displayed above are meant as a guide and do not represent a price quote.
+Check the official [pricing page](https://studio.ai21.com/pricing) for up-to-date rates.""")
