@@ -123,9 +123,9 @@ The calculator computes the number of tokens in a sample of text you provide and
         per_month = count * interval2month[interval]
     with col2:
         st.subheader('Monthly volume')
-        st.metric("# Requests", per_month)
-        st.metric("# Prompt tokens", per_month * num_prompt_tokens, "FREE")
-        st.metric("# Generated tokens", per_month * num_generated_tokens)
+        st.metric("# Requests", f"{per_month:,d}")
+        st.metric("# Prompt tokens", f"{per_month * num_prompt_tokens:,d}", "FREE")
+        st.metric("# Generated tokens", f"{per_month * num_generated_tokens:,d}")
 
     st.markdown("---")
 
@@ -138,7 +138,7 @@ The calculator computes the number of tokens in a sample of text you provide and
 
     columns = st.columns(len(models))
     for col, model, cost in zip(columns, models, total_costs):
-        col.metric(model, f"${cost:.2f}", delta='/month', delta_color='off')
+        col.metric(model, f"${cost:,.2f}", delta='/month', delta_color='off')
 
     st.caption("Fees vary by the size of the model you choose to use: j1-jumbo is the largest and most capable, j1-large is the smallest and most affordable, with j1-grande somewhere in between.")
 
@@ -146,10 +146,10 @@ The calculator computes the number of tokens in a sample of text you provide and
         st.table(
             {
                 'Model Size': models,
-                'Requests': [f"${c:.2f}" for c in request_costs],
+                'Requests': [f"${c:,.2f}" for c in request_costs],
                 'Prompt Tokens': ['FREE' for m in models],
-                'Generated Tokens': [f"${c:.2f}" for c in generated_token_costs],
-                'Total': [f"${c:.2f}" for c in total_costs]
+                'Generated Tokens': [f"${c:,.2f}" for c in generated_token_costs],
+                'Total': [f"${c:,.2f}" for c in total_costs]
             }
         )
 
